@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>N. Priya Dharshini | AI & NLP Researcher</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0a0e1a; --bg2: #111827; --card: #161d2e;
+    --accent: #38bdf8; --accent2: #818cf8; --gold: #fbbf24;
+    --text: #e2e8f0; --muted: #94a3b8; --border: rgba(56,189,248,0.15);
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  html { scroll-behavior:smooth; }
+  body { background:var(--bg); color:var(--text); font-family:'DM Sans',sans-serif; overflow-x:hidden; }
+  body::before {
+    content:''; position:fixed; inset:0;
+    background-image: linear-gradient(rgba(56,189,248,0.03) 1px,transparent 1px), linear-gradient(90deg,rgba(56,189,248,0.03) 1px,transparent 1px);
+    background-size:60px 60px; pointer-events:none; z-index:0;
+  }
+  nav {
+    position:fixed; top:0; left:0; right:0; z-index:100;
+    padding:1.2rem 4rem; display:flex; justify-content:space-between; align-items:center;
+    background:rgba(10,14,26,0.85); backdrop-filter:blur(16px); border-bottom:1px solid var(--border);
+  }
+  .nav-logo { font-family:'JetBrains Mono',monospace; font-size:1rem; color:var(--accent); }
+  .nav-links { display:flex; gap:2.5rem; }
+  .nav-links a { color:var(--muted); text-decoration:none; font-size:0.875rem; font-weight:500; letter-spacing:0.05em; text-transform:uppercase; transition:color 0.2s; }
+  .nav-links a:hover { color:var(--accent); }
+  .hero { min-height:100vh; display:flex; align-items:center; padding:8rem 4rem 4rem; position:relative; z-index:1; }
+  .hero-content { max-width:900px; }
+  .orb { position:absolute; border-radius:50%; filter:blur(80px); pointer-events:none; opacity:0.12; }
+  .orb1 { width:500px; height:500px; background:var(--accent); top:-100px; right:-100px; }
+  .orb2 { width:400px; height:400px; background:var(--accent2); bottom:0; left:-100px; }
+  .hero-tag { font-family:'JetBrains Mono',monospace; font-size:0.8rem; color:var(--accent); letter-spacing:0.2em; text-transform:uppercase; margin-bottom:1.5rem; opacity:0; animation:fadeUp 0.6s ease 0.2s forwards; }
+  .hero h1 { font-family:'DM Serif Display',serif; font-size:clamp(3rem,7vw,5.5rem); line-height:1.05; margin-bottom:1.5rem; opacity:0; animation:fadeUp 0.6s ease 0.4s forwards; }
+  .hero h1 em { font-style:italic; color:var(--accent); }
+  .hero-desc { font-size:1.1rem; color:var(--muted); line-height:1.8; max-width:600px; margin-bottom:2.5rem; opacity:0; animation:fadeUp 0.6s ease 0.6s forwards; }
+  .hero-badges { display:flex; flex-wrap:wrap; gap:0.75rem; margin-bottom:3rem; opacity:0; animation:fadeUp 0.6s ease 0.8s forwards; }
+  .badge { padding:0.4rem 1rem; border:1px solid var(--border); border-radius:100px; font-size:0.8rem; font-family:'JetBrains Mono',monospace; color:var(--muted); background:rgba(56,189,248,0.05); }
+  .hero-cta { display:flex; gap:1rem; opacity:0; animation:fadeUp 0.6s ease 1s forwards; }
+  .btn-primary { padding:0.85rem 2rem; background:var(--accent); color:#0a0e1a; border:none; border-radius:8px; font-weight:600; font-size:0.9rem; text-decoration:none; transition:all 0.2s; display:inline-block; }
+  .btn-primary:hover { background:#7dd3fc; transform:translateY(-2px); }
+  .btn-outline { padding:0.85rem 2rem; background:transparent; color:var(--accent); border:1px solid var(--accent); border-radius:8px; font-weight:600; font-size:0.9rem; text-decoration:none; transition:all 0.2s; display:inline-block; }
+  .btn-outline:hover { background:rgba(56,189,248,0.1); transform:translateY(-2px); }
+  .stats { display:grid; grid-template-columns:repeat(4,1fr); gap:1.5rem; padding:0 4rem 6rem; max-width:1200px; margin:0 auto; position:relative; z-index:1; }
+  .stat-card { background:var(--card); border:1px solid var(--border); border-radius:16px; padding:2rem; text-align:center; transition:all 0.2s; }
+  .stat-card:hover { transform:translateY(-4px); border-color:var(--accent); }
+  .stat-num { font-family:'DM Serif Display',serif; font-size:2.5rem; color:var(--accent); display:block; }
+  .stat-label { font-size:0.85rem; color:var(--muted); margin-top:0.5rem; }
+  section { padding:6rem 4rem; position:relative; z-index:1; max-width:1200px; margin:0 auto; }
+  .section-label { font-family:'JetBrains Mono',monospace; font-size:0.75rem; color:var(--accent); letter-spacing:0.2em; text-transform:uppercase; margin-bottom:1rem; }
+  .section-title { font-family:'DM Serif Display',serif; font-size:clamp(2rem,4vw,3rem); margin-bottom:3rem; line-height:1.2; }
+  .projects-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(320px,1fr)); gap:1.5rem; }
+  .project-card { background:var(--card); border:1px solid var(--border); border-radius:16px; padding:2rem; transition:all 0.3s; position:relative; overflow:hidden; }
+  .project-card::before { content:''; position:absolute; top:0; left:0; right:0; height:3px; background:linear-gradient(90deg,var(--accent),var(--accent2)); transform:scaleX(0); transition:transform 0.3s; transform-origin:left; }
+  .project-card:hover::before { transform:scaleX(1); }
+  .project-card:hover { transform:translateY(-6px); border-color:rgba(56,189,248,0.3); box-shadow:0 20px 40px rgba(0,0,0,0.3); }
+  .project-icon { font-size:2rem; margin-bottom:1rem; display:block; }
+  .project-title { font-family:'DM Serif Display',serif; font-size:1.2rem; margin-bottom:0.5rem; }
+  .project-accuracy { font-family:'JetBrains Mono',monospace; font-size:0.78rem; color:var(--gold); margin-bottom:0.75rem; }
+  .project-desc { font-size:0.875rem; color:var(--muted); line-height:1.7; margin-bottom:1.25rem; }
+  .project-tags { display:flex; flex-wrap:wrap; gap:0.5rem; margin-bottom:1.25rem; }
+  .tag { padding:0.2rem 0.65rem; background:rgba(56,189,248,0.1); border:1px solid rgba(56,189,248,0.2); border-radius:100px; font-size:0.72rem; font-family:'JetBrains Mono',monospace; color:var(--accent); }
+  .project-link { font-size:0.8rem; color:var(--accent); text-decoration:none; font-weight:500; display:inline-flex; align-items:center; gap:0.4rem; transition:gap 0.2s; }
+  .project-link:hover { gap:0.7rem; }
+  .skills-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(260px,1fr)); gap:1.5rem; }
+  .skill-card { background:var(--card); border:1px solid var(--border); border-radius:16px; padding:1.75rem; transition:all 0.2s; }
+  .skill-card:hover { border-color:rgba(56,189,248,0.3); transform:translateY(-3px); }
+  .skill-category { font-size:0.75rem; font-family:'JetBrains Mono',monospace; color:var(--accent2); letter-spacing:0.1em; text-transform:uppercase; margin-bottom:1rem; }
+  .skill-list { display:flex; flex-wrap:wrap; gap:0.5rem; }
+  .skill-pill { padding:0.3rem 0.75rem; background:rgba(129,140,248,0.1); border-radius:100px; font-size:0.8rem; color:var(--text); border:1px solid rgba(129,140,248,0.2); }
+  .research-cards { display:flex; flex-direction:column; gap:1.25rem; }
+  .research-card { background:var(--card); border:1px solid var(--border); border-radius:16px; padding:2rem; display:flex; gap:1.5rem; align-items:flex-start; transition:all 0.2s; }
+  .research-card:hover { border-color:rgba(56,189,248,0.3); transform:translateX(6px); }
+  .research-icon { font-size:2rem; flex-shrink:0; }
+  .research-type { font-family:'JetBrains Mono',monospace; font-size:0.72rem; color:var(--gold); letter-spacing:0.1em; text-transform:uppercase; margin-bottom:0.5rem; }
+  .research-title { font-size:1rem; font-weight:600; margin-bottom:0.5rem; line-height:1.5; }
+  .research-desc { font-size:0.85rem; color:var(--muted); line-height:1.7; }
+  .contact-wrapper { background:var(--card); border:1px solid var(--border); border-radius:24px; padding:4rem; text-align:center; }
+  .contact-title { font-family:'DM Serif Display',serif; font-size:2.5rem; margin-bottom:1rem; }
+  .contact-desc { color:var(--muted); margin-bottom:2.5rem; font-size:1.05rem; }
+  .contact-links { display:flex; justify-content:center; gap:1.5rem; flex-wrap:wrap; }
+  .contact-link { display:flex; align-items:center; gap:0.6rem; padding:0.85rem 1.75rem; background:rgba(56,189,248,0.08); border:1px solid var(--border); border-radius:100px; color:var(--text); text-decoration:none; font-size:0.9rem; font-weight:500; transition:all 0.2s; }
+  .contact-link:hover { background:rgba(56,189,248,0.15); border-color:var(--accent); color:var(--accent); transform:translateY(-2px); }
+  footer { text-align:center; padding:2rem; color:var(--muted); font-size:0.8rem; border-top:1px solid var(--border); position:relative; z-index:1; font-family:'JetBrains Mono',monospace; }
+  @keyframes fadeUp { from { opacity:0; transform:translateY(24px); } to { opacity:1; transform:translateY(0); } }
+  .reveal { opacity:0; transform:translateY(30px); transition:opacity 0.6s ease,transform 0.6s ease; }
+  .reveal.visible { opacity:1; transform:translateY(0); }
+  @media(max-width:768px){nav{padding:1rem 1.5rem;}.nav-links{display:none;}section,.hero{padding:5rem 1.5rem 3rem;}.stats{grid-template-columns:repeat(2,1fr);padding:0 1.5rem 3rem;}.contact-wrapper{padding:2rem 1.5rem;}}
+</style>
+</head>
+<body>
+<nav>
+  <div class="nav-logo">priya.dev</div>
+  <div class="nav-links">
+    <a href="#projects">Projects</a>
+    <a href="#skills">Skills</a>
+    <a href="#research">Research</a>
+    <a href="#contact">Contact</a>
+  </div>
+</nav>
+
+<div style="position:relative;overflow:hidden;">
+  <div class="orb orb1"></div>
+  <div class="orb orb2"></div>
+  <div class="hero">
+    <div class="hero-content">
+      <div class="hero-tag">// PhD Research Scholar · AI & NLP</div>
+      <h1>N. Priya <em>Dharshini</em></h1>
+      <p class="hero-desc">Building intelligent systems at the intersection of Natural Language Processing, Machine Learning, and Computer Vision. Published IEEE researcher passionate about turning research into real-world AI solutions.</p>
+      <div class="hero-badges">
+        <span class="badge">Python</span><span class="badge">NLP</span><span class="badge">Machine Learning</span><span class="badge">Computer Vision</span><span class="badge">BERT</span><span class="badge">TensorFlow</span><span class="badge">OpenCV</span>
+      </div>
+      <div class="hero-cta">
+        <a href="#projects" class="btn-primary">View Projects</a>
+        <a href="https://www.linkedin.com/in/priya-dharshini-51b857168/" target="_blank" class="btn-outline">LinkedIn →</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="stats">
+  <div class="stat-card reveal"><span class="stat-num">5+</span><div class="stat-label">AI Projects Built</div></div>
+  <div class="stat-card reveal"><span class="stat-num">99%</span><div class="stat-label">Model Accuracy</div></div>
+  <div class="stat-card reveal"><span class="stat-num">2</span><div class="stat-label">Research Publications</div></div>
+  <div class="stat-card reveal"><span class="stat-num">IEEE</span><div class="stat-label">Published Researcher</div></div>
+</div>
+
+<section id="projects">
+  <div class="section-label">// what i've built</div>
+  <h2 class="section-title">Projects</h2>
+  <div class="projects-grid">
+    <div class="project-card reveal">
+      <span class="project-icon">😷</span>
+      <div class="project-title">Face Mask Detection</div>
+      <div class="project-accuracy">⭐ 98.9% Accuracy</div>
+      <div class="project-desc">Deep learning model using MobileNetV2 and Transfer Learning to detect face masks in real-time with 99-100% confidence on real-world photos.</div>
+      <div class="project-tags"><span class="tag">TensorFlow</span><span class="tag">OpenCV</span><span class="tag">MobileNetV2</span><span class="tag">Python</span></div>
+      <a href="https://github.com/Priya1824-svg/face-mask-detection" target="_blank" class="project-link">View on GitHub →</a>
+    </div>
+    <div class="project-card reveal">
+      <span class="project-icon">💬</span>
+      <div class="project-title">Sentiment Analysis Dashboard</div>
+      <div class="project-accuracy">⭐ 99.26% Confidence</div>
+      <div class="project-desc">AI-powered web dashboard using RoBERTa to classify text as Positive, Neutral, or Negative with interactive real-time visualizations.</div>
+      <div class="project-tags"><span class="tag">HuggingFace</span><span class="tag">RoBERTa</span><span class="tag">Gradio</span><span class="tag">NLP</span></div>
+      <a href="https://github.com/Priya1824-svg/sentiment-dashboard" target="_blank" class="project-link">View on GitHub →</a>
+    </div>
+    <div class="project-card reveal">
+      <span class="project-icon">📰</span>
+      <div class="project-title">Fake News Detector</div>
+      <div class="project-accuracy">⭐ 99% Accuracy</div>
+      <div class="project-desc">NLP system trained on 44,898 articles using TF-IDF and Logistic Regression to detect fake news with 99% precision and recall.</div>
+      <div class="project-tags"><span class="tag">TF-IDF</span><span class="tag">Scikit-learn</span><span class="tag">Gradio</span><span class="tag">NLP</span></div>
+      <a href="https://github.com/Priya1824-svg/Fake-News-Decetor" target="_blank" class="project-link">View on GitHub →</a>
+    </div>
+    <div class="project-card reveal">
+      <span class="project-icon">🤖</span>
+      <div class="project-title">Tamil Chatbot</div>
+      <div class="project-accuracy">⭐ Bilingual NLP</div>
+      <div class="project-desc">NLP-based bilingual chatbot conversing in Tamil and English. Directly inspired by IEEE research on phonetic insights for Tamil language.</div>
+      <div class="project-tags"><span class="tag">NLTK</span><span class="tag">Tamil NLP</span><span class="tag">Gradio</span><span class="tag">Python</span></div>
+      <a href="https://github.com/Priya1824-svg/Tamilchatbot" target="_blank" class="project-link">View on GitHub →</a>
+    </div>
+    <div class="project-card reveal">
+      <span class="project-icon">📄</span>
+      <div class="project-title">AI Resume Screening Tool</div>
+      <div class="project-accuracy">⭐ Cosine Similarity NLP</div>
+      <div class="project-desc">NLP tool that automatically ranks PDF resumes by match percentage against a job description using TF-IDF and Cosine Similarity.</div>
+      <div class="project-tags"><span class="tag">TF-IDF</span><span class="tag">PyPDF2</span><span class="tag">Gradio</span><span class="tag">NLP</span></div>
+      <a href="https://github.com/Priya1824-svg/Resume-Screening-tool" target="_blank" class="project-link">View on GitHub →</a>
+    </div>
+    <div class="project-card reveal">
+      <span class="project-icon">👁️</span>
+      <div class="project-title">Employee Attendance System</div>
+      <div class="project-accuracy">⭐ Facial Recognition</div>
+      <div class="project-desc">Automated attendance management system leveraging facial recognition to mark employee presence with minimal manual intervention.</div>
+      <div class="project-tags"><span class="tag">OpenCV</span><span class="tag">ML</span><span class="tag">Python</span><span class="tag">Face Recognition</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="skills">
+  <div class="section-label">// what i know</div>
+  <h2 class="section-title">Technical Skills</h2>
+  <div class="skills-grid">
+    <div class="skill-card reveal"><div class="skill-category">Languages</div><div class="skill-list"><span class="skill-pill">Python</span><span class="skill-pill">SQL</span></div></div>
+    <div class="skill-card reveal"><div class="skill-category">AI / Machine Learning</div><div class="skill-list"><span class="skill-pill">NLP</span><span class="skill-pill">Deep Learning</span><span class="skill-pill">Transfer Learning</span><span class="skill-pill">Explainable AI</span></div></div>
+    <div class="skill-card reveal"><div class="skill-category">Libraries & Frameworks</div><div class="skill-list"><span class="skill-pill">TensorFlow</span><span class="skill-pill">Keras</span><span class="skill-pill">HuggingFace</span><span class="skill-pill">Scikit-learn</span><span class="skill-pill">OpenCV</span><span class="skill-pill">BERT</span><span class="skill-pill">NLTK</span></div></div>
+    <div class="skill-card reveal"><div class="skill-category">Tools & Platforms</div><div class="skill-list"><span class="skill-pill">Git</span><span class="skill-pill">GitHub</span><span class="skill-pill">Google Colab</span><span class="skill-pill">Gradio</span><span class="skill-pill">Kaggle</span></div></div>
+  </div>
+</section>
+
+<section id="research">
+  <div class="section-label">// what i've published</div>
+  <h2 class="section-title">Research Publications</h2>
+  <div class="research-cards">
+    <div class="research-card reveal">
+      <div class="research-icon">📡</div>
+      <div>
+        <div class="research-type">IEEE Publication</div>
+        <div class="research-title">NLP-Based Phonetic Insights for Improving Voice Recognition and Synthesis</div>
+        <div class="research-desc">Investigated phonetic patterns using Natural Language Processing to improve voice recognition accuracy and speech synthesis quality. Published at Kalasalingam University.</div>
+      </div>
+    </div>
+    <div class="research-card reveal">
+      <div class="research-icon">📖</div>
+      <div>
+        <div class="research-type">Book Chapter</div>
+        <div class="research-title">Analysis of Sentiment in Tamil Comments Using BERT & Explainable AI</div>
+        <div class="research-desc">Applied BERT-based sentiment classification on Tamil-language social media data with Explainable AI techniques to interpret and visualize model predictions.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="contact-wrapper reveal">
+    <div class="section-label" style="display:flex;justify-content:center;">// get in touch</div>
+    <div class="contact-title">Let's Connect</div>
+    <div class="contact-desc">Open to research collaborations, junior AI/ML roles, and opportunities.</div>
+    <div class="contact-links">
+      <a href="mailto:priyadharshininoffical@gmail.com" class="contact-link">📧 priyadharshininoffical@gmail.com</a>
+      <a href="https://www.linkedin.com/in/priya-dharshini-51b857168/" target="_blank" class="contact-link">💼 LinkedIn Profile</a>
+      <a href="https://github.com/Priya1824-svg" target="_blank" class="contact-link">🐱 GitHub Profile</a>
+    </div>
+  </div>
+</section>
+
+<footer>built by N. Priya Dharshini · PhD Research Scholar · Kalasalingam University · 2026</footer>
+
+<script>
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) setTimeout(() => entry.target.classList.add('visible'), i * 80);
+    });
+  }, { threshold: 0.1 });
+  reveals.forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
