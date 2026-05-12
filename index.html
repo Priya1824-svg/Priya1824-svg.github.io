@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>A4 Sized Banner</title>
+  <style>
+    /* Container sized roughly like A4 */
+    .banner {
+      width: 800px;   /* approx A4 width on screen */
+      height: 1120px; /* approx A4 height on screen */
+      background: linear-gradient(135deg, #6b73ff 0%, #000dff 100%);
+      color: white;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      font-family: Arial, sans-serif;
+      border-radius: 15px;
+      box-shadow: 0 12px 25px rgba(0,0,0,0.4);
+      padding: 40px 30px;
+      margin: 20px auto;
+    }
+
+    .banner h1 {
+      font-size: 3rem;
+      margin-bottom: 20px;
+      text-shadow: 2px 2px 8px rgba(0,0,0,0.6);
+    }
+
+    .banner p {
+      font-size: 1.4rem;
+      margin-bottom: 40px;
+      max-width: 600px;
+      text-shadow: 1px 1px 5px rgba(0,0,0,0.5);
+    }
+
+    /* Animated Gradient Button */
+    .gradient-btn {
+      background: linear-gradient(270deg, #ff6a00, #ee0979, #ff6a00);
+      background-size: 600% 600%;
+      color: white;
+      border: none;
+      padding: 15px 45px;
+      font-weight: bold;
+      border-radius: 8px;
+      cursor: pointer;
+      animation: gradientAnimation 8s ease infinite;
+      transition: box-shadow 0.3s ease;
+      font-size: 1.3rem;
+    }
+
+    .gradient-btn:hover {
+      box-shadow: 0 8px 20px rgba(255, 106, 0, 0.7);
+    }
+
+    @keyframes gradientAnimation {
+      0% {
+        background-position: 0% 50%;
+      }
+      50% {
+        background-position: 100% 50%;
+      }
+      100% {
+        background-position: 0% 50%;
+      }
+    }
+
+  </style>
+</head>
+<body>
+
+  <div class="banner">
+    <h1>Welcome to Our Special Offer</h1>
+    <p>Discover amazing deals and exciting products available only this season. Don’t miss out on limited-time offers crafted just for you.</p>
+    <button class="gradient-btn">Shop Now</button>
+  </div>
+
+</body>
+</html>
